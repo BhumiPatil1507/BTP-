@@ -180,7 +180,7 @@ The following table presents the R² scores obtained on the respective test sets
 |---------|------------|-----------|-----|-----------------|----------------|----------|
 |Cp|0.8676|0.6515|0.3986|0.3914|0.8801|0.8788|
 |Eat|0.8830|0.7006|0.4262|0.4294|0.8930|0.8917|
-|epsb0.7285|0.5691|0.4738|0.2066|0.7548|0.7503|
+|epsb|0.7285|0.5691|0.4738|0.2066|0.7548|0.7503|
 |TSy|0.7921|0.5884|0.4424|0.2845|0.8062|0.8045|
 |TSb|0.8416|0.6916|0.5970|0.3764|0.8521|0.8501|
 |YM|0.7990|0.5639|0.4434|0.1965|0.8140|0.8103|
@@ -267,6 +267,8 @@ $$
 (P_{\mathrm{FP}}, P_{\mathrm{Desc}}, P_{\mathrm{Graph}}, P_{\mathrm{FG}}).
 $$
 
+**8.1 Calculation of Expert Disagreement**
+
 The disagreement score can be calculated as the standard deviation of these predictions:
 
 $$
@@ -301,8 +303,7 @@ $$
 Pearson correlation was used to investigate the linear relationship between expert disagreement and absolute prediction error.
 
 $$
-r = \frac{\operatorname{Cov}(D,E)}
-{\sigma_D \sigma_E}
+r = \frac{\text{Cov}(D,E)}{\sigma_D \sigma_E}
 $$
 
 The following results were obtained:
