@@ -180,12 +180,14 @@ The comparison is based on R², RMSE and MAE.
 The disagreement between the four individual experts can be used as an indicator of prediction uncertainty.
 For a given polymer, let the four expert predictions be:
 
+$$
 (P_{\mathrm{FP}}, P_{\mathrm{Desc}}, P_{\mathrm{Graph}}, P_{\mathrm{FG}}).
+$$
 
 The disagreement score can be calculated as the standard deviation of these predictions:
 
 $$
-D_i = \operatorname{Std}\left(
+D_i = \text{Std}\left(
 P_{\mathrm{FP},i},
 P_{\mathrm{Desc},i},
 P_{\mathrm{Graph},i},
