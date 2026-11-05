@@ -125,7 +125,7 @@ out-of-fold predictions.
 
 **Data Splitting and Cross-Validation**
 
-The Cp implementation uses an 80:20 training-testing split with random seed 42.
+The implementation uses an 80:20 training-testing split with random seed 42.
 
 Three-fold cross-validation is used to generate out-of-fold predictions for training the stacking models.
 
@@ -145,7 +145,7 @@ The performance of individual experts, MoE and RidgeStack is compared separately
 
 **7. Results and Performance Comparison**
 
-The framework is evaluated for five polymer properties:
+The framework is evaluated for six polymer properties:
 1. Cp
 2. Eat
 3. YM
@@ -158,6 +158,7 @@ The detailed evaluation metrics are available in the corresponding CSV files.
 |Property| Results file|
 |--------|-------------|
 |Cp | Cp_experts_MoE_RidgeStack_metrics.csv|
+|Eat| |
 |YM | YM_experts_MoE_RidgeStack_metrics.csv|
 |EPSB | epsb_experts_MoE_RidgeStack_metrics.csv|
 |TSY | TSy_experts_MoE_RidgeStack_metrics.csv|
@@ -206,7 +207,7 @@ _Note:_ Expert disagreement is a proxy for uncertainty, not a calibrated predict
 The repository contains property-specific model implementations and their corresponding evaluation results.
 
 An example organization is:
-
+'''text
 Polymer-Property-Prediction/
 │
 ├── Cp/
@@ -232,7 +233,7 @@ Polymer-Property-Prediction/
 │   └── TSb_experts_MoE_RidgeStack_metrics.csv
 │
 └── README.md
-
+'''
 
 **10. Requirements**
 
