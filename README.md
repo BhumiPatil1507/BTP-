@@ -179,6 +179,47 @@ For each property, the results compare:
 
 The comparison is based on R², RMSE and MAE.
 
+## Download Complete Results and Experimental Data
+
+Due to the large size of the generated files and experimental artifacts, the complete results are hosted on Google Drive rather than being stored directly in this GitHub repository.
+
+**[Access the Complete Results and Data on Google Drive]((https://drive.google.com/drive/folders/1yrxojvVKmGIhqRDDGJUMhrJaLkpncWvx?usp=drive_link))**
+
+The Google Drive repository contains the following:
+
+### 1. Trained Models and Evaluation Results
+
+For each target property (Cp, YM, EPSB, TSY and TSB), the corresponding results folder contains:
+
+- **Models:** Trained individual expert models and ensemble models.
+- **Predictions:** Test-set predictions from individual experts and combined models.
+- **OOF Predictions:** Out-of-fold predictions generated during stacking and ensemble training.
+- **Splits:** Training and testing indices and source-row information used to maintain data alignment.
+- **Metrics:** Individual expert evaluation metrics and overall performance comparisons between experts, MoE and RidgeStack.
+- **Preprocessing Artifacts:** Saved imputers and other preprocessing files required for model inference.
+- **Run Summary:** JSON files containing information about the training and experimental run.
+
+### 2. SMILES-to-Image Conversion Results
+
+Contains the generated polymer structure images obtained from the original polymer SMILES representations. These images were used as inputs for the image-to-SMILES reconstruction workflow.
+
+### 3. Generated Polymer Features
+
+Contains the molecular feature representations generated from polymer structures, including:
+
+- Molecular fingerprints
+- Molecular descriptors
+- Graph-based features
+- Functional group features
+
+These feature representations are used as inputs to train the individual expert models.
+
+### 4. Additional Experimental Outputs
+
+The Drive folder also contains intermediate and final outputs generated during model training, prediction, evaluation, and analysis.
+
+**Note:** The GitHub repository provides the source code, notebooks, and project documentation. Google Drive hosts the larger datasets, trained model artifacts, generated images, feature files, and experimental results to facilitate access and reproducibility.
+
 
 **8. Prediction Disagreement and Uncertainty Analysis**
 
