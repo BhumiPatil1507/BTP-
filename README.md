@@ -7,7 +7,7 @@ Polymers can be represented in multiple ways, and each representation captures d
 
 The predictions from these individual experts are then combined using two ensemble approaches:
 
-**MoE**: A nonlinear stacking approach that learns how to combine predictions from individual experts.
+**MoE(ExtraTrees)**: A nonlinear stacking approach that learns how to combine predictions from individual experts.
 
 **RidgeStack:** A regularized linear stacking approach that combines predictions from individual experts.
 
@@ -239,39 +239,58 @@ Polymer-Property-Prediction/
 The implementation uses Python and common machine learning and scientific computing libraries.
 The main dependencies include:
 
--Python
--NumPy
--Pandas
--Scikit-learn
--XGBoost
+- Python
+
+- NumPy
+
+- Pandas
+
+- Scikit-learn
+
+- XGBoost
 
 The exact package versions should be documented to support reproducibility.
 
 **11. Execution Instructions**
 
-Clone or download the repository.
-Open the relevant property-specific notebook in Google Colab or Jupyter Notebook.
-Provide access to the required polymer dataset and precomputed feature files.
-Update the input and output paths according to your environment.
-Execute the notebook cells in sequence.
-Review the saved model predictions and evaluation metrics.
+- Clone or download the repository.
+  
+- Open the relevant property-specific notebook in Google Colab or Jupyter Notebook.
+
+- Provide access to the required polymer dataset and precomputed feature files.
+
+- Update the input and output paths according to your environment.
+
+- Execute the notebook cells in sequence.
+
+- Review the saved model predictions and evaluation metrics.
 The feature-generation process and required input files should be documented separately if they are not included in this repository.
 
 **12. Limitations and Future Work**
 
 Potential directions for further development include:
-Exploring additional molecular representations.
-Investigating more advanced expert-combination architectures with explicit gating networks.
-Improving uncertainty estimation through calibrated prediction intervals.
-Evaluating generalization on structurally distinct or externally sourced polymer datasets.
-Investigating the relationship between expert disagreement and prediction errors.
-Developing a unified framework for predicting multiple polymer properties.
+
+- Exploring additional molecular representations.
+
+- Investigating more advanced expert-combination architectures with explicit gating networks.
+
+- Improving uncertainty estimation through calibrated prediction intervals.
+
+- Evaluating generalization on structurally distinct or externally sourced polymer datasets.
+
+- Investigating the relationship between expert disagreement and prediction errors.
+
+- Developing a unified framework for predicting multiple polymer properties.
 
 **13. Conclusion**
 
 This project investigates a multi-representation machine learning framework for polymer property prediction.
+
 Four independent XGBoost experts are trained using molecular fingerprints, molecular descriptors, graph features and functional group features.
+
 Their predictions are subsequently combined using an ExtraTrees-based nonlinear stacking model and RidgeStack.
-The framework is evaluated across five polymer properties: Cp, Eat, YM, EPSB, TSY and TSB.
+
+The framework is evaluated across six polymer properties: Cp, Eat, YM, EPSB, TSY and TSB.
+
 The comparison between individual experts and ensemble approaches provides a basis for understanding the contribution of different molecular representations and prediction-combination strategies to polymer property prediction.
 
