@@ -1,8 +1,6 @@
 # Polymer Property Prediction Using Multi-Expert Machine Learning, MoE and RidgeStack
 ## 1. Project Overview
 
-## Project Overview
-
 This project focuses on developing a computational framework for polymer representation, molecular feature generation, and machine learning-based prediction of polymer properties.
 
 The workflow includes converting polymer SMILES representations into 2D molecular structure images using RDKit. These generated images provide a visual representation of polymer structures.
