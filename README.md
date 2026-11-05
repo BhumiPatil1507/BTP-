@@ -179,15 +179,10 @@ The following table presents the R² scores obtained on the respective test sets
 | Property|Fingerprints|Descriptors|Graph|Functional Groups|MoE (ExtraTrees)|RidgeStack
 |---------|------------|-----------|-----|-----------------|----------------|----------|
 |Cp|0.8676|0.6515|0.3986|0.3914|0.8801|0.8788|
-
 |Eat|0.8830|0.7006|0.4262|0.4294|0.8930|0.8917|
-
 |epsb0.7285|0.5691|0.4738|0.2066|0.7548|0.7503|
-
 |TSy|0.7921|0.5884|0.4424|0.2845|0.8062|0.8045|
-
 |TSb|0.8416|0.6916|0.5970|0.3764|0.8521|0.8501|
-
 |YM|0.7990|0.5639|0.4434|0.1965|0.8140|0.8103|
 
 **7.2 Overall Performance Observations**
@@ -211,15 +206,10 @@ The ensemble models were further evaluated using R², RMSE and MAE.
 |Property|MoE R²|MoE RMSE|MoE MAE|RidgeStack R²|RidgeStack RMSE|RidgeStack MAE|
 |--------|-----|---------|-------|------------|---------------|--------------|
 |Cp|0.8801|0.03889|0.02895|0.8788|0.03912|0.02922|
-
 |Eat|0.8930|0.04763|0.03547|0.8917|0.04792|0.03578|
-
 |epsb|0.7548|6.31052|3.36704|0.7503|6.36822|3.41937|
-
 |TSy|0.8062|5.18220|3.91430|0.8045|5.20504|3.93173|
-
 |TSb|0.8521|6.64089|4.97103|0.8501|6.68596|5.00181|
-
 |YM|0.8140 |154.14788|114.46079|0.8103|155.68049|115.54821|
 
 The ExtraTrees-based ensemble achieved slightly better results than RidgeStack across all reported properties, with higher R² and lower RMSE and MAE.
@@ -319,17 +309,11 @@ The following results were obtained:
 
 |Property|MoE Pearson r|RidgeStack Pearson r|
 |--------|-------------|---------------------|
-
 |Cp|0.1751|0.1917|
-
 |Eat|0.1654|0.1791|
-
 |epsb|0.5242|0.5347|
-
 |TSy|0.1342|0.1483|
-
 |TSb|0.1585|0.1721|
-
 |YM|0.2096|0.2288|
 
 **8.4 Interpretation of Correlation Results**
@@ -355,17 +339,12 @@ This suggests that expert disagreement may provide more useful information about
 The following statistics summarize the disagreement distribution across the test samples.
 
 |Property|Mean Di|Median Di|95th Percentile Di|
-
+|--------|-------|---------|------------------|
 |Cp|0.040242|0.033334|0.094716|
-
 |Eat|0.051785|0.042706|0.121496|
-
 |EPSB|3.741236|2.738976|9.860247|
-
 |TSy|4.178687|3.693381|8.598482|
-
 |TSb|5.707923|5.006536|12.059233|
-
 |YM|130.497541|111.325993|288.892673|
 
 These statistics describe the distribution of expert disagreement within each property. Since the target properties have different numerical scales and units, their disagreement magnitudes should not be directly compared.
