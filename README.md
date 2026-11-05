@@ -181,12 +181,12 @@ TSb_experts_MoE_RidgeStack_metrics.csv
 
 For each property, the results compare:
 
--Fingerprint Expert
--Descriptor Expert
--Graph Expert
--Functional Group Expert
--MoE
--RidgeStack
+- Fingerprint Expert
+- Descriptor Expert
+- Graph Expert
+- Functional Group Expert
+- MoE
+- RidgeStack
 
 The comparison is based on R², RMSE and MAE.
 
@@ -200,7 +200,7 @@ For a given polymer, let the four expert predictions be:
 
 The disagreement score can be calculated as the standard deviation of these predictions:
 
-$\[
+[
 D_i =
 \operatorname{Std}
 \left(
@@ -209,7 +209,7 @@ P_{\mathrm{Desc},i},
 P_{\mathrm{Graph},i},
 P_{\mathrm{FG},i}
 \right)
-\]$
+]
 
 A higher disagreement indicates that the experts provide more different predictions for that polymer.
 
