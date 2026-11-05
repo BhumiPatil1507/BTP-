@@ -104,7 +104,7 @@ This approach helps control the influence of correlated expert predictions and r
 
 The overall workflow consists of the following stages:
 
-1.*Dataset preparation*: Load polymer data and identify valid target values.
+1. *Dataset preparation*: Load polymer data and identify valid target values.
 
 2. *Feature loading:* Load the precomputed fingerprint, descriptor, graph and functional group feature datasets.
 
@@ -135,11 +135,11 @@ The test set is kept separate from the stacking-model training process.
 
 The models are evaluated using three standard regression metrics.
 
--_R² (Coefficient of Determination):_ Measures how much of the variation in the target values is explained by the model. Higher values indicate better performance.
+- _R² (Coefficient of Determination):_ Measures how much of the variation in the target values is explained by the model. Higher values indicate better performance.
 
--_RMSE (Root Mean Squared Error):_ Measures prediction error while penalizing larger errors more strongly. Lower values indicate better performance.
+- _RMSE (Root Mean Squared Error):_ Measures prediction error while penalizing larger errors more strongly. Lower values indicate better performance.
 
--_MAE (Mean Absolute Error):_ Measures the average absolute difference between actual and predicted values. Lower values indicate better performance.
+- _MAE (Mean Absolute Error):_ Measures the average absolute difference between actual and predicted values. Lower values indicate better performance.
 
 The performance of individual experts, MoE and RidgeStack is compared separately for each target property.
 
@@ -200,10 +200,16 @@ For a given polymer, let the four expert predictions be:
 
 The disagreement score can be calculated as the standard deviation of these predictions:
 
-[
-D_i = \operatorname{Std}
-(P_{\mathrm{FP}},P_{\mathrm{Desc}},P_{\mathrm{Graph}},P_{\mathrm{FG}})
-]
+$\[
+D_i =
+\operatorname{Std}
+\left(
+P_{\mathrm{FP},i},
+P_{\mathrm{Desc},i},
+P_{\mathrm{Graph},i},
+P_{\mathrm{FG},i}
+\right)
+\]$
 
 A higher disagreement indicates that the experts provide more different predictions for that polymer.
 
