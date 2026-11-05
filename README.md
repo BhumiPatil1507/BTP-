@@ -207,7 +207,8 @@ _Note:_ Expert disagreement is a proxy for uncertainty, not a calibrated predict
 The repository contains property-specific model implementations and their corresponding evaluation results.
 
 An example organization is:
-'''text
+
+```text
 Polymer-Property-Prediction/
 │
 ├── Cp/
@@ -233,7 +234,7 @@ Polymer-Property-Prediction/
 │   └── TSb_experts_MoE_RidgeStack_metrics.csv
 │
 └── README.md
-'''
+```
 
 **10. Requirements**
 
