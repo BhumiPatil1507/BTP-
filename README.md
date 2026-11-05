@@ -11,7 +11,7 @@ These features are used to train individual XGBoost regression models for predic
 1. Heat capacity (Cp)
 2. Atomization Energy (Eat)
 3. Young's modulus (YM)
-4. Dielectric constant (epsb)
+4. Elongation at break (epsb)
 5. Tensile strength (Tsy)
 6. Tensile strength at break (Tsb)
 
