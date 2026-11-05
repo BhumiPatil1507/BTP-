@@ -215,28 +215,26 @@ An example organization is:
 ```text
 Polymer-Property-Prediction/
 │
-├── Cp/
-│   └── Cp_MoE_RidgeStack.ipynb
-│
-├── YM/
-│   └── YM_MoE_RidgeStack.ipynb
-│
-├── EPSB/
-│   └── EPSB_MoE_RidgeStack.ipynb
-│
-├── TSY/
-│   └── TSY_MoE_RidgeStack.ipynb
-│
-├── TSB/
-│   └── TSB_MoE_RidgeStack.ipynb
+├── Polymer Codes/
+│   ├── Cp.ipynb
+|   ├── Eat.ipynb
+│   ├── YM.ipynb
+│   ├── TSy.ipynb
+│   ├── TSb.ipynb
+│   └── epsb.ipynb
 │
 ├── Results/
-│   ├── Cp_experts_MoE_RidgeStack_metrics.csv
-│   ├── YM_experts_MoE_RidgeStack_metrics.csv
-│   ├── epsb_experts_MoE_RidgeStack_metrics.csv
-│   ├── TSy_experts_MoE_RidgeStack_metrics.csv
-│   └── TSb_experts_MoE_RidgeStack_metrics.csv
+│   ├── Cp
+|   ├── Eat
+|   ├── Tsb
+|   ├── Tsy
+|   ├── YM
+|   └── epsb
 │
+├── Feature Extraction Code
+│
+├── Simile to Image Generation
+|
 └── README.md
 ```
 
