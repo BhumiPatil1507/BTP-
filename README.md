@@ -11,9 +11,9 @@ These features are used to train individual XGBoost regression models for predic
 1. Heat capacity (Cp)
 2. Atomization Energy (Eat)
 3. Young's modulus (YM)
-4. Dielectric constant (EPSB),
-5. Tensile strength (TSY), and
-6. Tensile strength at break (TSB).
+4. Dielectric constant (epsb)
+5. Tensile strength (Tsy)
+6. Tensile strength at break (Tsb)
 
 The predictions from these individual experts are then combined using two ensemble approaches:
 
@@ -324,6 +324,16 @@ The feature-generation process and required input files should be documented sep
 
 Potential directions for further development include:
 
+- Complete the image-to-SMILES reconstruction pipeline using image-based molecular recognition models such as MolScribe.
+  
+- Compare reconstructed SMILES representations with their original polymer structures.
+  
+- Evaluate reconstruction accuracy and identify errors in terminal groups, atoms, and molecular connectivity.
+  
+- Investigate the potential integration of image-based molecular recognition with the polymer property prediction workflow.
+  
+- Further improve model uncertainty estimation and prediction reliability.
+
 - Exploring additional molecular representations.
 
 - Investigating more advanced expert-combination architectures with explicit gating networks.
@@ -344,7 +354,7 @@ Four independent XGBoost experts are trained using molecular fingerprints, molec
 
 Their predictions are subsequently combined using an ExtraTrees-based nonlinear stacking model and RidgeStack.
 
-The framework is evaluated across six polymer properties: Cp, Eat, YM, EPSB, TSY and TSB.
+The framework is evaluated across six polymer properties: Cp, Eat, YM, epsb, Tsy and Tsb.
 
 The comparison between individual experts and ensemble approaches provides a basis for understanding the contribution of different molecular representations and prediction-combination strategies to polymer property prediction.
 
