@@ -1,5 +1,5 @@
 # Polymer Property Prediction Using Multi-Expert Machine Learning, MoE and RidgeStack
-**1. Project Overview**
+## 1. Project Overview
 
 This project focuses on developing machine learning models for predicting important physical and mechanical properties of polymers using their molecular representations.
 
@@ -19,7 +19,7 @@ The framework is applied to five polymer properties:
 5. Tensile strength at yield (TSY)
 6. Tensile strength at break (TSB)
 
-**2. Project Objectives**
+## 2. Project Objectives
 
 The main objectives of this work are:
 - To develop machine learning models for predicting multiple polymer properties.
@@ -34,39 +34,39 @@ The main objectives of this work are:
 
 - To investigate prediction disagreement as a possible indicator of model uncertainty.
 
-**3. Molecular Feature Representations**
+## 3. Molecular Feature Representations
 
 Each polymer is represented using four different feature sets. Each feature representation captures different structural or chemical information.
 
-*3.1 Molecular Fingerprints*
+**3.1 Molecular Fingerprints**
 
 Fingerprints encode the presence of molecular substructures as a numerical vector, commonly containing binary values.
 
 They capture local molecular patterns and structural environments.
 
-*3.2 Molecular Descriptors*
+**3.2 Molecular Descriptors**
 
 Molecular descriptors are numerical quantities that describe molecular characteristics.
 
 Examples include molecular weight, atom counts, molecular composition and other physicochemical or structural characteristics, depending on the descriptors calculated.
 
-*3.3 Graph Features*
+**3.3 Graph Features**
 
 Graph-based representations describe the connectivity and topology of molecular structures.
 
 They capture information about how atoms and bonds are connected. In this implementation, graph information is supplied as precomputed numerical features.
 
-*3.4 Functional Group Features*
+**3.4 Functional Group Features**
 
 Functional group features represent the chemical groups present in a polymer.
 
 They provide information about important chemical environments that can influence polymer properties.
 
-**4. Model Architecture**
+## 4. Model Architecture
 
 The proposed framework consists of four independent expert models followed by two ensemble approaches.
 
-*4.1 Individual Expert Models*
+**4.1 Individual Expert Models**
 
 Four independent XGBoost regression models are trained:
 |Expert | Input Representation|
@@ -80,7 +80,7 @@ Each expert independently predicts the target polymer property.
 
 This allows us to evaluate how effectively each molecular representation captures information relevant to the target property.
 
-*4.2 MoE*
+**4.2 MoE**
 
 The MoE approach combines predictions from the four individual experts.
 
@@ -94,7 +94,7 @@ An ExtraTrees regression model is then trained on this prediction matrix to lear
 
 _Important implementation note:_ In the current implementation, the component called MoE uses an ExtraTrees-based nonlinear stacking model. It does not use a conventional neural gating network with explicit expert weights.
 
-*4.3 RidgeStack*
+**4.3 RidgeStack**
 
 RidgeStack combines the predictions of the four experts using Ridge regression.
 
@@ -104,30 +104,30 @@ The regularization parameter is selected using cross-validation through RidgeCV.
 
 This approach helps control the influence of correlated expert predictions and reduces the risk of overfitting the stacking model.
 
-**5. Methodology**
+## 5. Methodology
 
 The overall workflow consists of the following stages:
 
-1. *Dataset preparation*: Load polymer data and identify valid target values.
+1. **Dataset preparation:** Load polymer data and identify valid target values.
 
-2. *Feature loading:* Load the precomputed fingerprint, descriptor, graph and functional group feature datasets.
+2. **Feature loading:** Load the precomputed fingerprint, descriptor, graph and functional group feature datasets.
 
-3. *Data preprocessing:* Handle missing values and prepare the feature matrices.
+3. **Data preprocessing:** Handle missing values and prepare the feature matrices.
 
-4. *Train-test splitting:* Divide the valid dataset into training and testing subsets.
+4. **Train-test splitting:** Divide the valid dataset into training and testing subsets.
 
-5. *Expert training:* Train four independent XGBoost regression models.
+5. **Expert training:** Train four independent XGBoost regression models.
 
-6. *Expert evaluation:* Evaluate individual experts using the held-out test dataset.
+6. **Expert evaluation:** Evaluate individual experts using the held-out test dataset.
 
-7. *Out-of-fold prediction generation:* Generate cross-validated predictions for training samples.
+7. **Out-of-fold prediction generation:** Generate cross-validated predictions for training samples.
 
-8. *Ensemble training:* Train the ExtraTrees-based nonlinear stacking model and RidgeStack using the 
+8. **Ensemble training:** Train the ExtraTrees-based nonlinear stacking model and RidgeStack using the 
 out-of-fold predictions.
 
-9. *Final evaluation:* Compare the ensemble predictions against the individual expert predictions on the held-out test set.
+9. **Final evaluation:** Compare the ensemble predictions against the individual expert predictions on the held-out test set.
 
-**Data Splitting and Cross-Validation**
+### Data Splitting and Cross-Validation
 
 The implementation uses an 80:20 training-testing split with random seed 42.
 
@@ -135,19 +135,19 @@ Three-fold cross-validation is used to generate out-of-fold predictions for trai
 
 The test set is kept separate from the stacking-model training process.
 
-**6. Model Evaluation Metrics**
+## 6. Model Evaluation Metrics
 
 The models are evaluated using three standard regression metrics.
 
-- _R² (Coefficient of Determination):_ Measures how much of the variation in the target values is explained by the model. Higher values indicate better performance.
+- **R² (Coefficient of Determination):** Measures how much of the variation in the target values is explained by the model. Higher values indicate better performance.
 
-- _RMSE (Root Mean Squared Error):_ Measures prediction error while penalizing larger errors more strongly. Lower values indicate better performance.
+- **RMSE (Root Mean Squared Error):** Measures prediction error while penalizing larger errors more strongly. Lower values indicate better performance.
 
-- _MAE (Mean Absolute Error):_ Measures the average absolute difference between actual and predicted values. Lower values indicate better performance.
+- **MAE (Mean Absolute Error):** Measures the average absolute difference between actual and predicted values. Lower values indicate better performance.
 
 The performance of individual experts, MoE and RidgeStack is compared separately for each target property.
 
-**7. Results and Performance Comparison**
+## 7. Results and Performance Comparison
 
 The framework is evaluated for six polymer properties:
 1. Cp
@@ -183,11 +183,11 @@ The comparison is based on R², RMSE and MAE.
 
 Due to the large size of the generated files and experimental artifacts, the complete results are hosted on Google Drive rather than being stored directly in this GitHub repository.
 
-**[Access the Complete Results and Data on Google Drive]((https://drive.google.com/drive/folders/1yrxojvVKmGIhqRDDGJUMhrJaLkpncWvx?usp=drive_link))**
+**[Access the Complete Results and Data on Google Drive](https://drive.google.com/drive/folders/1yrxojvVKmGIhqRDDGJUMhrJaLkpncWvx?usp=drive_link)**
 
 The Google Drive repository contains the following:
 
-### 1. Trained Models and Evaluation Results
+**1. Trained Models and Evaluation Results**
 
 For each target property (Cp, YM, EPSB, TSY and TSB), the corresponding results folder contains:
 
@@ -199,11 +199,11 @@ For each target property (Cp, YM, EPSB, TSY and TSB), the corresponding results 
 - **Preprocessing Artifacts:** Saved imputers and other preprocessing files required for model inference.
 - **Run Summary:** JSON files containing information about the training and experimental run.
 
-### 2. SMILES-to-Image Conversion Results
+**2. SMILES-to-Image Conversion Results**
 
 Contains the generated polymer structure images obtained from the original polymer SMILES representations. These images were used as inputs for the image-to-SMILES reconstruction workflow.
 
-### 3. Generated Polymer Features
+**3. Generated Polymer Features**
 
 Contains the molecular feature representations generated from polymer structures, including:
 
@@ -214,14 +214,14 @@ Contains the molecular feature representations generated from polymer structures
 
 These feature representations are used as inputs to train the individual expert models.
 
-### 4. Additional Experimental Outputs
+**4. Additional Experimental Outputs**
 
 The Drive folder also contains intermediate and final outputs generated during model training, prediction, evaluation, and analysis.
 
-**Note:** The GitHub repository provides the source code, notebooks, and project documentation. Google Drive hosts the larger datasets, trained model artifacts, generated images, feature files, and experimental results to facilitate access and reproducibility.
+_Note:_ The GitHub repository provides the source code, notebooks, and project documentation. Google Drive hosts the larger datasets, trained model artifacts, generated images, feature files, and experimental results to facilitate access and reproducibility.
 
 
-**8. Prediction Disagreement and Uncertainty Analysis**
+## 8. Prediction Disagreement and Uncertainty Analysis
 
 The disagreement between the four individual experts can be used as an indicator of prediction uncertainty.
 For a given polymer, let the four expert predictions be:
@@ -247,7 +247,7 @@ This disagreement can be compared with the absolute prediction error to investig
 
 _Note:_ Expert disagreement is a proxy for uncertainty, not a calibrated prediction interval or a guarantee of prediction error.
 
-**9. Repository Structure**
+## 9. Repository Structure
 
 The repository contains property-specific model implementations and their corresponding evaluation results.
 
@@ -279,7 +279,7 @@ Polymer-Property-Prediction/
 └── README.md
 ```
 
-**10. Requirements**
+## 10. Requirements
 
 The implementation uses Python and common machine learning and scientific computing libraries.
 The main dependencies include:
@@ -296,7 +296,7 @@ The main dependencies include:
 
 The exact package versions should be documented to support reproducibility.
 
-**11. Execution Instructions**
+## 11. Execution Instructions
 
 - Clone or download the repository.
   
@@ -311,7 +311,7 @@ The exact package versions should be documented to support reproducibility.
 - Review the saved model predictions and evaluation metrics.
 The feature-generation process and required input files should be documented separately if they are not included in this repository.
 
-**12. Limitations and Future Work**
+## 12. Limitations and Future Work
 
 Potential directions for further development include:
 
@@ -327,7 +327,7 @@ Potential directions for further development include:
 
 - Developing a unified framework for predicting multiple polymer properties.
 
-**13. Conclusion**
+## 13. Conclusion
 
 This project investigates a multi-representation machine learning framework for polymer property prediction.
 
