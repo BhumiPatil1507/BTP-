@@ -162,7 +162,7 @@ The detailed evaluation metrics are available in the corresponding CSV files.
 |Property| Results file|
 |--------|-------------|
 |Cp | Cp_experts_MoE_RidgeStack_metrics.csv|
-|Eat| | Eat_experts_MoE_RidgeStack_metrics.csv |
+|Eat| Eat_experts_MoE_RidgeStack_metrics.csv |
 |YM | YM_experts_MoE_RidgeStack_metrics.csv|
 |EPSB | epsb_experts_MoE_RidgeStack_metrics.csv|
 |TSY | TSy_experts_MoE_RidgeStack_metrics.csv|
@@ -215,7 +215,7 @@ An example organization is:
 ```text
 Polymer-Property-Prediction/
 │
-├── Polymer Codes/
+├── Property Codes/
 │   ├── Cp.ipynb
 |   ├── Eat.ipynb
 │   ├── YM.ipynb
