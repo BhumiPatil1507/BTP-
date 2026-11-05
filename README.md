@@ -1,9 +1,21 @@
 # Polymer Property Prediction Using Multi-Expert Machine Learning, MoE and RidgeStack
 ## 1. Project Overview
 
-This project focuses on developing machine learning models for predicting important physical and mechanical properties of polymers using their molecular representations.
+## Project Overview
 
-Polymers can be represented in multiple ways, and each representation captures different aspects of their molecular structure. Instead of relying on a single representation, this project explores a multi-expert learning approach in which separate machine learning models are trained using different feature representations.
+This project focuses on developing a computational framework for polymer representation, molecular feature generation, and machine learning-based prediction of polymer properties.
+
+The workflow includes converting polymer SMILES representations into 2D molecular structure images using RDKit. These generated images provide a visual representation of polymer structures.
+
+In addition, multiple molecular feature representations are generated from polymer structures, including molecular fingerprints, molecular descriptors, graph-based features, and functional group representations.
+
+These features are used to train individual XGBoost regression models for predicting five polymer properties: 
+1. Heat capacity (Cp)
+2. Atomization Energy (Eat)
+3. Young's modulus (YM)
+4. Dielectric constant (EPSB),
+5. Tensile strength (TSY), and
+6. Tensile strength at break (TSB).
 
 The predictions from these individual experts are then combined using two ensemble approaches:
 
@@ -11,28 +23,27 @@ The predictions from these individual experts are then combined using two ensemb
 
 **RidgeStack:** A regularized linear stacking approach that combines predictions from individual experts.
 
-The framework is applied to five polymer properties:
-1. Heat capacity (Cp)
-2. Atomization energy(Eat)
-3. Young's modulus (YM)
-4. Elongation at break (EPSB)
-5. Tensile strength at yield (TSY)
-6. Tensile strength at break (TSB)
+The project also explores prediction disagreement among individual experts to investigate model uncertainty and its relationship with prediction errors.
+
 
 ## 2. Project Objectives
 
 The main objectives of this work are:
-- To develop machine learning models for predicting multiple polymer properties.
 
-- To investigate the predictive capabilities of different molecular feature representations.
+1. **SMILES-to-Image Conversion:** Generate 2D molecular structure images from polymer SMILES representations using RDKit.
 
-- To train independent expert models using different feature representations.
+2. **Polymer Feature Generation:** Generate multiple molecular feature representations, including molecular fingerprints, molecular descriptors, graph-based features, and functional group features.
 
-- To combine expert predictions using nonlinear and linear stacking methods.
+3. **Individual Expert Model Development:** Train separate XGBoost regression models using different molecular feature representations to predict polymer properties.
 
-- To compare the performance of individual experts against ensemble models.
+4. **Ensemble Model Development:** Combine predictions from individual experts using ExtraTrees-based nonlinear stacking and RidgeStack.
 
-- To investigate prediction disagreement as a possible indicator of model uncertainty.
+5. **Model Performance Evaluation:** Compare individual expert models and ensemble approaches using R², MAE, and RMSE.
+
+6. **Uncertainty Analysis:** Investigate disagreement among individual expert predictions and examine its relationship with prediction errors.
+
+7. **Reproducibility:** Save trained models, preprocessing artifacts, predictions, evaluation metrics, generated images, and experimental outputs to support future inference and reproducibility.
+
 
 ## 3. Molecular Feature Representations
 
@@ -179,7 +190,7 @@ For each property, the results compare:
 
 The comparison is based on R², RMSE and MAE.
 
-## Download Complete Results and Experimental Data
+### Download Complete Results and Experimental Data
 
 Due to the large size of the generated files and experimental artifacts, the complete results are hosted on Google Drive rather than being stored directly in this GitHub repository.
 
@@ -201,7 +212,7 @@ For each target property (Cp, YM, EPSB, TSY and TSB), the corresponding results 
 
 **2. SMILES-to-Image Conversion Results**
 
-Contains the generated polymer structure images obtained from the original polymer SMILES representations. These images were used as inputs for the image-to-SMILES reconstruction workflow.
+Contains the generated polymer structure images obtained from the original polymer SMILES representations.
 
 **3. Generated Polymer Features**
 
