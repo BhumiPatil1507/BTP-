@@ -66,6 +66,7 @@ The proposed framework consists of four independent expert models followed by tw
 
 Four independent XGBoost regression models are trained:
 |Expert | Input Representation|
+|-------|--------------------- |
 |Fingerprint | Molecular fingerprints|
 |Descriptor | Molecular descriptors
 |Graph | Graph features|
@@ -103,24 +104,24 @@ This approach helps control the influence of correlated expert predictions and r
 
 The overall workflow consists of the following stages:
 
-*Dataset preparation*: Load polymer data and identify valid target values.
+1.*Dataset preparation*: Load polymer data and identify valid target values.
 
-Feature loading: Load the precomputed fingerprint, descriptor, graph and functional group feature datasets.
+2. *Feature loading:* Load the precomputed fingerprint, descriptor, graph and functional group feature datasets.
 
-*Data preprocessing:* Handle missing values and prepare the feature matrices.
+3. *Data preprocessing:* Handle missing values and prepare the feature matrices.
 
-*Train-test splitting:* Divide the valid dataset into training and testing subsets.
+4. *Train-test splitting:* Divide the valid dataset into training and testing subsets.
 
-*Expert training:* Train four independent XGBoost regression models.
+5. *Expert training:* Train four independent XGBoost regression models.
 
-*Expert evaluation:* Evaluate individual experts using the held-out test dataset.
+6. *Expert evaluation:* Evaluate individual experts using the held-out test dataset.
 
-*Out-of-fold prediction generation:* Generate cross-validated predictions for training samples.
+7. *Out-of-fold prediction generation:* Generate cross-validated predictions for training samples.
 
-*Ensemble training:* Train the ExtraTrees-based nonlinear stacking model and RidgeStack using the 
+8. *Ensemble training:* Train the ExtraTrees-based nonlinear stacking model and RidgeStack using the 
 out-of-fold predictions.
 
-*Final evaluation:* Compare the ensemble predictions against the individual expert predictions on the held-out test set.
+9. *Final evaluation:* Compare the ensemble predictions against the individual expert predictions on the held-out test set.
 
 **Data Splitting and Cross-Validation**
 
