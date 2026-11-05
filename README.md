@@ -155,29 +155,13 @@ The framework is evaluated for five polymer properties:
 
 The detailed evaluation metrics are available in the corresponding CSV files.
 
-Property
-
-Results file
-
-Cp
-
-Cp_experts_MoE_RidgeStack_metrics.csv
-
-YM
-
-YM_experts_MoE_RidgeStack_metrics.csv
-
-EPSB
-
-epsb_experts_MoE_RidgeStack_metrics.csv
-
-TSY
-
-TSy_experts_MoE_RidgeStack_metrics.csv
-
-TSB
-
-TSb_experts_MoE_RidgeStack_metrics.csv
+|Property| Results file|
+|--------|-------------|
+|Cp | Cp_experts_MoE_RidgeStack_metrics.csv|
+|YM | YM_experts_MoE_RidgeStack_metrics.csv|
+|EPSB | epsb_experts_MoE_RidgeStack_metrics.csv|
+|TSY | TSy_experts_MoE_RidgeStack_metrics.csv|
+|TSB | TSb_experts_MoE_RidgeStack_metrics.csv|
 
 For each property, the results compare:
 
@@ -201,16 +185,12 @@ For a given polymer, let the four expert predictions be:
 The disagreement score can be calculated as the standard deviation of these predictions:
 
 $$
-[
-D_i =
-\operatorname{Std}
-\left(
+D_i = \operatorname{Std}\left(
 P_{\mathrm{FP},i},
 P_{\mathrm{Desc},i},
 P_{\mathrm{Graph},i},
 P_{\mathrm{FG},i}
 \right)
-]
 $$
 
 A higher disagreement indicates that the experts provide more different predictions for that polymer.
