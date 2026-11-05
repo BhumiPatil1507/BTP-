@@ -7,7 +7,7 @@ The workflow includes converting polymer SMILES representations into 2D molecula
 
 In addition, multiple molecular feature representations are generated from polymer structures, including molecular fingerprints, molecular descriptors, graph-based features, and functional group representations.
 
-These features are used to train individual XGBoost regression models for predicting five polymer properties: 
+These features are used to train individual XGBoost regression models for predicting six polymer properties: 
 1. Heat capacity (Cp)
 2. Atomization Energy (Eat)
 3. Young's modulus (YM)
