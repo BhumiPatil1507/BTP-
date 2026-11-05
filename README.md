@@ -12,8 +12,8 @@ These features are used to train individual XGBoost regression models for predic
 2. Atomization Energy (Eat)
 3. Young's modulus (YM)
 4. Elongation at break (epsb)
-5. Tensile strength (Tsy)
-6. Tensile strength at break (Tsb)
+5. Tensile strength (TSy)
+6. Tensile strength at break (TSb)
 
 The predictions from these individual experts are then combined using two ensemble approaches:
 
@@ -158,35 +158,73 @@ The performance of individual experts, MoE and RidgeStack is compared separately
 
 ## 7. Results and Performance Comparison
 
-The framework is evaluated for six polymer properties:
-1. Cp
-2. Eat
-3. YM
-4. EPSB
-5. TSY
-6. TSB
+The performance of four individual XGBoost expert models and two ensemble approaches was evaluated across the supplied polymer property prediction experiments.
 
-The detailed evaluation metrics are available in the corresponding CSV files.
+The individual experts were trained using four different molecular feature representations:
 
-|Property| Results file|
-|--------|-------------|
-|Cp | Cp_experts_MoE_RidgeStack_metrics.csv|
-|Eat| Eat_experts_MoE_RidgeStack_metrics.csv |
-|YM | YM_experts_MoE_RidgeStack_metrics.csv|
-|EPSB | epsb_experts_MoE_RidgeStack_metrics.csv|
-|TSY | TSy_experts_MoE_RidgeStack_metrics.csv|
-|TSB | TSb_experts_MoE_RidgeStack_metrics.csv|
+- Molecular fingerprints
 
-For each property, the results compare:
+- Molecular descriptors
 
-- Fingerprint Expert
-- Descriptor Expert
-- Graph Expert
-- Functional Group Expert
-- MoE
-- RidgeStack
+- Graph-based features
 
-The comparison is based on R², RMSE and MAE.
+- Functional group features
+
+Their predictions were combined using an ExtraTrees-based nonlinear stacking approach and RidgeStack.
+
+**7.1 Individual Experts vs Ensemble Models**
+
+The following table presents the R² scores obtained on the respective test sets.
+
+| Property|Fingerprints|Descriptors|Graph|Functional Groups|MoE (ExtraTrees)|RidgeStack
+|---------|------------|-----------|-----|-----------------|----------------|----------|
+|Cp|0.8676|0.6515|0.3986|0.3914|0.8801|0.8788|
+
+|Eat|0.8830|0.7006|0.4262|0.4294|0.8930|0.8917|
+
+|epsb0.7285|0.5691|0.4738|0.2066|0.7548|0.7503|
+
+|TSy|0.7921|0.5884|0.4424|0.2845|0.8062|0.8045|
+
+|TSb|0.8416|0.6916|0.5970|0.3764|0.8521|0.8501|
+
+|YM|0.7990|0.5639|0.4434|0.1965|0.8140|0.8103|
+
+**7.2 Overall Performance Observations**
+
+- Fingerprint-based XGBoost achieved the highest predictive performance among the individual expert models across all six reported experiments.
+
+- Molecular descriptors generally performed better than graph and functional group representations.
+
+- The ExtraTrees-based ensemble achieved the highest R² across all reported experiments.
+
+- RidgeStack also consistently improved upon the strongest individual expert.
+
+- The performance improvement from ensemble learning was relatively modest, indicating that the fingerprint expert already captures substantial predictive information.
+
+The largest improvement over the fingerprint expert was observed for EPSB.
+
+**7.3 Ensemble Model Performance**
+
+The ensemble models were further evaluated using R², RMSE and MAE.
+
+|Property|MoE R²|MoE RMSE|MoE MAE|RidgeStack R²|RidgeStack RMSE|RidgeStack MAE|
+|--------|-----|---------|-------|------------|---------------|--------------|
+|Cp|0.8801|0.03889|0.02895|0.8788|0.03912|0.02922|
+
+|Eat|0.8930|0.04763|0.03547|0.8917|0.04792|0.03578|
+
+|epsb|0.7548|6.31052|3.36704|0.7503|6.36822|3.41937|
+
+|TSy|0.8062|5.18220|3.91430|0.8045|5.20504|3.93173|
+
+|TSb|0.8521|6.64089|4.97103|0.8501|6.68596|5.00181|
+
+|YM|0.8140 |154.14788|114.46079|0.8103|155.68049|115.54821|
+
+The ExtraTrees-based ensemble achieved slightly better results than RidgeStack across all reported properties, with higher R² and lower RMSE and MAE.
+
+_Note:_ RMSE and MAE values are expressed in the respective target property scales and should not be directly compared across properties.
 
 ### Download Complete Results and Experimental Data
 
@@ -198,7 +236,7 @@ The Google Drive repository contains the following:
 
 **1. Trained Models and Evaluation Results**
 
-For each target property (Cp, YM, EPSB, TSY and TSB), the corresponding results folder contains:
+For each target property (Cp, Eat, YM, epsb, TSy and TSb), the corresponding results folder contains:
 
 - **Models:** Trained individual expert models and ensemble models.
 - **Predictions:** Test-set predictions from individual experts and combined models.
@@ -253,6 +291,92 @@ $$
 A higher disagreement indicates that the experts provide more different predictions for that polymer.
 
 This disagreement can be compared with the absolute prediction error to investigate whether it is associated with model reliability.
+
+**8.2 Absolute Prediction Error**
+
+The absolute prediction errors were calculated separately for the two ensemble models.
+
+$$
+E_{\mathrm{MoE},i} =
+|y_i-\hat{y}_{\mathrm{MoE},i}|
+$$
+
+$$
+E_{\mathrm{RidgeStack},i} =
+|y_i-\hat{y}_{\mathrm{RidgeStack},i}|
+$$
+
+**8.3 Pearson Correlation Analysis**
+
+Pearson correlation was used to investigate the linear relationship between expert disagreement and absolute prediction error.
+
+$$
+r = \frac{\operatorname{Cov}(D,E)}
+{\sigma_D \sigma_E}
+$$
+
+The following results were obtained:
+
+|Property|MoE Pearson r|RidgeStack Pearson r|
+|--------|-------------|---------------------|
+
+|Cp|0.1751|0.1917|
+
+|Eat|0.1654|0.1791|
+
+|epsb|0.5242|0.5347|
+
+|TSy|0.1342|0.1483|
+
+|TSb|0.1585|0.1721|
+
+|YM|0.2096|0.2288|
+
+**8.4 Interpretation of Correlation Results**
+
+The results indicate that the relationship between expert disagreement and prediction error varies across polymer properties.
+
+- epsb exhibits the strongest positive correlation, suggesting that higher expert disagreement tends to be associated with larger prediction errors.
+
+- Cp, Eat, TSy, TSb and YM exhibit relatively weak positive correlations.
+
+- RidgeStack consistently shows slightly higher disagreement-error correlations than the ExtraTrees-based ensemble.
+
+- The relatively weak correlations for most properties indicate that expert disagreement alone cannot fully explain prediction errors.
+
+An important observation is that predictive performance and the usefulness of expert disagreement as an uncertainty indicator are two different aspects of model evaluation.
+
+For example, the Eat experiment achieves an R² of approximately 0.893, but exhibits a weak disagreement-error correlation. In contrast, epsb achieves a lower R² of approximately 0.755 while showing a considerably stronger positive correlation.
+
+This suggests that expert disagreement may provide more useful information about prediction errors for certain polymer properties than for others.
+
+**8.5 Distribution of Expert Disagreement**
+
+The following statistics summarize the disagreement distribution across the test samples.
+
+|Property|Mean Di|Median Di|95th Percentile Di|
+
+|Cp|0.040242|0.033334|0.094716|
+
+|Eat|0.051785|0.042706|0.121496|
+
+|EPSB|3.741236|2.738976|9.860247|
+
+|TSy|4.178687|3.693381|8.598482|
+
+|TSb|5.707923|5.006536|12.059233|
+
+|YM|130.497541|111.325993|288.892673|
+
+These statistics describe the distribution of expert disagreement within each property. Since the target properties have different numerical scales and units, their disagreement magnitudes should not be directly compared.
+
+**8.6 Limitations of the Uncertainty Analysis**
+
+Expert disagreement is investigated as a proxy for prediction uncertainty rather than a calibrated uncertainty estimate.
+
+Pearson correlation measures linear association and does not establish causation. A weak correlation does not necessarily exclude nonlinear relationships between disagreement and prediction error.
+
+Further investigation using alternative uncertainty quantification techniques and calibration methods may help improve the reliability of prediction uncertainty estimates.
 
 _Note:_ Expert disagreement is a proxy for uncertainty, not a calibrated prediction interval or a guarantee of prediction error.
 
