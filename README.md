@@ -2,9 +2,13 @@
 **1. Project Overview**
 
 This project focuses on developing machine learning models for predicting important physical and mechanical properties of polymers using their molecular representations.
+
 Polymers can be represented in multiple ways, and each representation captures different aspects of their molecular structure. Instead of relying on a single representation, this project explores a multi-expert learning approach in which separate machine learning models are trained using different feature representations.
+
 The predictions from these individual experts are then combined using two ensemble approaches:
+
 **MoE**: A nonlinear stacking approach that learns how to combine predictions from individual experts.
+
 **RidgeStack:** A regularized linear stacking approach that combines predictions from individual experts.
 
 The framework is applied to five polymer properties:
@@ -19,10 +23,15 @@ The framework is applied to five polymer properties:
 
 The main objectives of this work are:
 To develop machine learning models for predicting multiple polymer properties.
+
 To investigate the predictive capabilities of different molecular feature representations.
+
 To train independent expert models using different feature representations.
+
 To combine expert predictions using nonlinear and linear stacking methods.
+
 To compare the performance of individual experts against ensemble models.
+
 To investigate prediction disagreement as a possible indicator of model uncertainty.
 
 **3. Molecular Feature Representations**
@@ -31,6 +40,7 @@ Each polymer is represented using four different feature sets. Each feature repr
 
 *3.1 Molecular Fingerprints*
 Fingerprints encode the presence of molecular substructures as a numerical vector, commonly containing binary values.
+
 They capture local molecular patterns and structural environments.
 
 *3.2 Molecular Descriptors*
