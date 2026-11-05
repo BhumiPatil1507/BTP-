@@ -200,6 +200,7 @@ For a given polymer, let the four expert predictions be:
 
 The disagreement score can be calculated as the standard deviation of these predictions:
 
+$$
 [
 D_i =
 \operatorname{Std}
@@ -210,6 +211,7 @@ P_{\mathrm{Graph},i},
 P_{\mathrm{FG},i}
 \right)
 ]
+$$
 
 A higher disagreement indicates that the experts provide more different predictions for that polymer.
 
