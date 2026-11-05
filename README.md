@@ -39,21 +39,25 @@ The main objectives of this work are:
 Each polymer is represented using four different feature sets. Each feature representation captures different structural or chemical information.
 
 *3.1 Molecular Fingerprints*
+
 Fingerprints encode the presence of molecular substructures as a numerical vector, commonly containing binary values.
 
 They capture local molecular patterns and structural environments.
 
 *3.2 Molecular Descriptors*
+
 Molecular descriptors are numerical quantities that describe molecular characteristics.
 
 Examples include molecular weight, atom counts, molecular composition and other physicochemical or structural characteristics, depending on the descriptors calculated.
 
 *3.3 Graph Features*
+
 Graph-based representations describe the connectivity and topology of molecular structures.
 
 They capture information about how atoms and bonds are connected. In this implementation, graph information is supplied as precomputed numerical features.
 
 *3.4 Functional Group Features*
+
 Functional group features represent the chemical groups present in a polymer.
 
 They provide information about important chemical environments that can influence polymer properties.
